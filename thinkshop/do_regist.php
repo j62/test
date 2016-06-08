@@ -1,0 +1,29 @@
+<?php
+include_once("./global.php");
+if(!isset($_POST['img_x'])){
+	msg("请提交表单","./regist.php");
+	exit;
+}
+$user=trim($_POST['user']);
+$sql="select * from ts_members where user='$user'";
+$re=mysql_query($sql);
+if(mysql_num_rows($re)>=1){
+	msg("用户名重复","./regist.php");
+	exit;
+}
+if($user==""||$_POST['pwd']==""){
+	msg("请将用户名密码填写完整","./regist.php");
+	exit;
+}
+$nickname=trim($_POST['nickname']);
+$pwd=md5(trim($_POST['pwd']));
+$email=$_POST['email'];
+$retime=time();
+$sql1="insert into ts_members (user,pwd,nickname,email,retime)value('$user','$pwd','$nickname','$email','$retime')";
+mysql_query($sql1);
+if(mysql_affected_rows()==1){
+	msg("注册成功","./login.php");
+}else{
+	msg("注册失败","./reginst.php");
+}
+?>

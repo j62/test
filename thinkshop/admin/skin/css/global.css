@@ -1,0 +1,27 @@
+/*product_cate_list start*/
+
+.pcinner{border:2px solid #CBD8AC;border-collapse:collapse;}
+.pcinner td{border:2px solid #CBD8AC}
+.id{width:100px;height:30px;}
+.class{width:480px;}
+.subclass{width:100px;}
+.operate{width:100px;}
+/*product_cate_list stop*/
+/*product_cate_add start*/
+.fname{width:130px;}
+/*product_cate_add stop*/
+/*product add start*/
+.color{width:40px;height:20px;display:inline-block;}
+/*product add stop*/
+/*login start#8A8A8A*/
+.login{width:910px;height:510px;background:#338715;margin-left:auto;margin-right:auto;margin-top:30px;overflow:hidden;border-radius:10px}
+.login_inner{width:635px;height:425px;background:red;margin-left:145px;margin-top:60px;border-radius:10px;overflow:hidden;background:url("../../skin/images/background1.png")no-repeat center center}
+.login_top{width:440px;height:75px;margin-top:40px;margin-left:105px;}
+.login_tt{width:430px;height:35px;font-size:28px;color:white;font-family:"楷体";font-weight:bold;line-height:35px;text-align:center;}
+.login_tc{width:100px;height:35px;position:relative;top:-30px;left:335px;font-size:28px;color:white;font-style:"楷体";font-weight:bold;line-height:35px;text-align:center}
+.login_tb{width:500px;height:265px;background:gray;margin-left:75px;overflow:hidden;margin-top:10px;background:url("../../skin/images/background.png")no-repeat 0px 30px  }
+.login li{width:80%;height:30px;margin-top:30px;list-style:none;margin-left:70px;color:#8A8A8A;font-family:"楷体";font-weight:bold;}
+.login li input{width:250px;height:30px;border-radius:15px}
+.login ul span{font-size:20px;display:inline-block;width:65px;height:35px}
+.login li .sub{margin-top:10px;width:150px;height:45px;margin-left:53px;border-radius:5px}
+/*login stop*/

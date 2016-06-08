@@ -1,0 +1,20 @@
+<?php
+ include_once("./global.php");
+ if(!isset($_POST['sub_x'])){
+	msg("请重新提交表单","./myorder.php");
+	exit;
+ }
+ $commentator_id=$_SESSION['uid'];
+ $comment_content=$_POST['content'];
+ $pid=$_POST['pid'];
+ $comment_info=$_POST['cm_info'];
+ $oid=$_POST['oid'];
+ $comment_time=time();
+ $sql="insert into ts_comment (commentator_id,comment_content,pid,comment_info,oid,comment_time)value('$commentator_id','$comment_content','$pid','$comment_info','$oid','$comment_time')";
+ mysql_query($sql);
+ if(mysql_affected_rows()==1){
+	header("location:./detail.php?pid=".$pid);
+ }else{
+	msg("请重新提交表单","./myorder.php");
+ }
+?>

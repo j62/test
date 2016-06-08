@@ -1,0 +1,52 @@
+<?php
+include_once("./global.php");
+ if(!isset($_SESSION['uid'])){
+	msg("请先登录账号","./login.php");
+	exit;
+ }
+ if($_SESSION['type']==1){
+	msg("管理员不能买东西","./index.php");
+	exit;
+ }
+ if(!isset($_POST['pid'])){
+	msg("请先挑选商品","./shop.php");
+	exit;
+ }
+ $pid=$_POST['pid'];
+ $num=$_POST['num'];
+ $color=$_POST['color'];
+ $size=$_POST['size'];
+ if(!isset($_SESSION['cart'])){//申明购物车
+	$_SESSION['cart']=array();
+ }
+ foreach($_SESSION['cart'] as $key=>$vo){//判断是否购买了重复的商品
+	$pos=array_search($pid,$vo);
+	if($pos=="pid"){
+		$save=$vo;
+		if(in_array($size,$save)&&in_array($color,$save)){//同一件商品不同颜色 不同尺寸 生成不同的购物车
+			msg("商品已经存在于购物车中,请更改数量","./shop.php");
+			exit;
+		}
+	}
+ }
+  //判断库存是否充足
+ $sql="select snums from ts_product where pid='$pid'";
+ $re=mysql_query($sql);
+ $arr=mysql_fetch_assoc($re);
+ if($num>$arr['snums']){
+	msg("购买数量超过库存","./detail.php?pid=$pid");
+	exit;
+ }
+ if($arr['snums']==0){
+	msg("库存为0","./shop.php");
+ }
+$num1=count($_SESSION['cart']);
+$_SESSION['cart'][]=array("pid"=>$pid,"num"=>$num,"color"=>$color,"size"=>$size);
+$num2=count($_SESSION['cart']);
+$result=$num2-$num1;
+if($result==1){
+	msg("添加成功","./shop.php");
+}else{
+	msg("添加失败","./shop.php");
+}
+?>
